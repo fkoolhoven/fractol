@@ -1,0 +1,10 @@
+Fractol notes
+
+
+
+One pixel is 1 color
+One color is 32 bits (4 bytes)
+Bits per pixel = 32?
+Buffer is a char pointer
+Char = 8 bits!!!!
+So to store an integers you need 4 char mem blocks!!!

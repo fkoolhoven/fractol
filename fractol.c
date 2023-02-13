@@ -6,7 +6,7 @@
 /*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/02/09 20:50:08 by felicia          ###   ########.fr       */
+/*   Updated: 2023/02/10 23:19:25 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,25 @@ static void	set_pixel_color(t_fractol *fractol, int x, int y, int color)
 	fractol->buf[first_byte + 3] = color >> 24;
 }
 
-int		get_color(int mandelbrot_check)
+int		get_color(int iterations)
 {
-	if (mandelbrot_check == 0)
-		return(0x9999FF);
-	else if (mandelbrot_check == 1)
-		return(0xFFFFFF);
-	return (0x000000);
+	if (iterations >= 0 && iterations <= 10)
+		return (0xEC9531);
+	else if (iterations >= 11 && iterations <= 20)
+		return (0xFAD96A);
+	else if (iterations >= 21 && iterations <= 30)
+		return (0xF5BABA);
+	else if (iterations >= 31 && iterations <= 40)
+		return (0xCCFFFF);
+	else if (iterations >= 41 && iterations <= 50)
+		return (0x1687B7);
+	else if (iterations >= 51 && iterations <= 60)
+		return (0xFF5FAA);
+	else if (iterations >= 61 && iterations <= 70)
+		return (0xFF5FAA);
+	else if (iterations >= 71 && iterations <= 80)
+		return (0x000000);
+	return (0xFFFFFF);
 }
 
 int	mandelbrot(t_fractol fractol, int x, int y)
@@ -37,32 +49,33 @@ int	mandelbrot(t_fractol fractol, int x, int y)
 	double	real_a;
 	double	imaginary_b;
 	int		iterations;
-	double	zr;
-	double	zi;
+	double	z_real;
+	double	z_imaginary;
 	double	tmp;
 
-	real_a 		= (x - fractol.image_width/2.0)*4.0/fractol.image_width;
-	imaginary_b = (y - fractol.image_heigth/2.0)*4.0/fractol.image_width;
-	zr = 0;
-	zi = 0;
+
+	real_a 		= fractol.move_horizontal + (x - fractol.image_width/fractol.complex_heigth)*fractol.complex_width/fractol.image_width;
+	imaginary_b = fractol.move_vertical + (y - fractol.image_heigth/fractol.complex_heigth)*fractol.complex_width/fractol.image_width;
+	z_real = 0;
+	z_imaginary = 0;
 	iterations = 0;
-	fractol.max_iterations = 60;
+	fractol.max_iterations = 80;
 	while (iterations < fractol.max_iterations)
 	{
-		if ((zr * zr + zi * zi) > 4.0)
-			return (0);
-		tmp = 2 * zr * zi + imaginary_b;
-		zr = zr * zr - zi * zi + real_a;
-		zi = tmp;
+		if ((z_real * z_real + z_imaginary * z_imaginary) > 4.0)
+			return (iterations);
+		tmp = 2 * z_real * z_imaginary + imaginary_b;
+		z_real = z_real * z_real - z_imaginary * z_imaginary + real_a;
+		z_imaginary = tmp;
 		iterations++;
 	}
-	return (1);
+	return (iterations);
 }
 
 void	render_image(t_fractol fractol)
 {
 	int	color;
-	int	mandelbrot_check = 0;
+	int	iterations = 0;
 	int	x = 0;
 	int	y = 0;
 
@@ -75,8 +88,8 @@ void	render_image(t_fractol fractol)
 	{
 		while (x < fractol.image_width)
 		{
-			mandelbrot_check = mandelbrot(fractol, x, y);
-			color = get_color(mandelbrot_check);
+			iterations = mandelbrot(fractol, x, y);
+			color = get_color(iterations);
 			set_pixel_color(&fractol, x, y, color);
 			x++;
 		}
@@ -88,12 +101,28 @@ void	render_image(t_fractol fractol)
 
 int	zoom(int key, t_fractol *fractol)
 {
-	if (key == 126)
-	{	
-		fractol->image_width = fractol->image_width + 10;
-		fractol->image_heigth = fractol->image_heigth + 10;
-		render_image(*fractol);
+	if (key == 0x7D) // down
+	{
+		fractol->move_vertical = fractol->move_vertical + (fractol->complex_heigth / 50);
 	}
+	else if (key == 0x7E) // up
+	{
+		fractol->move_vertical = fractol->move_vertical - (fractol->complex_heigth / 50);
+	}
+	else if (key == 0x7C) // right
+	{
+		fractol->move_horizontal = fractol->move_horizontal + (fractol->complex_width / 50);
+	}
+	else if (key == 0x7B) // left
+	{
+		fractol->move_horizontal = fractol->move_horizontal - (fractol->complex_width / 50);
+	}
+	else if (key == 49) // zoom in spacebar
+	{	
+		fractol->complex_width = fractol->complex_width * 0.95;
+		fractol->complex_heigth = fractol->complex_heigth * 0.95;
+	}
+	render_image(*fractol);
 	return (0);
 }
 
@@ -124,16 +153,15 @@ int main(void)
 	int			hook;
 
 	// paramater setup, create function for?
-	fractol.image_width = 300;
-	fractol.image_heigth = 200;
 	fractol.window_width = 1000;
-	fractol.window_heigth = 1000;
+	fractol.window_heigth = 700;
+	fractol.image_width = 900;
+	fractol.image_heigth = 700;
+	fractol.complex_width = 4.0;
+	fractol.complex_heigth = 2.0;
+	fractol.move_horizontal = 0.0;
+	fractol.move_vertical = 0.0;
 	fractol.img_ptr = NULL;
-
-	// mlx_string_put(fractol.mlx_ptr, fractol.win_ptr, 1100, 650, 0xFF00FF, "purple"); // 12079 int is 32 bits
-	// mlx_string_put(fractol.mlx_ptr, fractol.win_ptr, 1100, 660, 0xFF0000, "red"); // 287616
-	// mlx_string_put(fractol.mlx_ptr, fractol.win_ptr, 1100, 670, 0x00FF00, "green"); // 15723752
-	// mlx_string_put(fractol.mlx_ptr, fractol.win_ptr, 1100, 680, 0x0000FF, "turquoise"); // 215723752
 
 	// basic mlx and window setup
 	fractol.mlx_ptr = mlx_init();

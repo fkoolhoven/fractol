@@ -6,7 +6,7 @@
 /*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/02/09 17:20:53 by felicia          ###   ########.fr       */
+/*   Updated: 2023/02/10 19:58:15 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,13 @@ typedef struct s_fractol
 	char	*buf;
 	int     window_width;
 	int     window_heigth;
-	int  	image_heigth;
 	int  	image_width;
+	int  	image_heigth;
+	double	complex_width;
+	double	complex_heigth;
+	double	move_vertical;
+	double	move_horizontal;
+	int		max_iterations;
 }	t_fractol;
 
 // =====FUNCTIONS===============================================================
