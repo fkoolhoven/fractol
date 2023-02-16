@@ -2,6 +2,9 @@ NAME	:= fractol
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./lib/MLX42
 
+LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
+LIBFT_DIR	= includes/libft
+
 HEADERS	:= -I ./includes -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 SRCS	:= fractol.c
@@ -15,14 +18,19 @@ libmlx:
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-$(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)
+
+$(LIBFT):
+	make bonus -C $(LIBFT_DIR)
 
 clean:
+	make clean -C $(LIBFT_DIR)
 	@rm -f $(OBJS)
 	@rm -f $(LIBMLX)/build
 
 fclean: clean
+	make fclean -C $(LIBFT_DIR)
 	@rm -f $(NAME)
 
 re: clean all

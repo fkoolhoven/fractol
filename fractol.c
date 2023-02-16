@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/02/14 18:26:46 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:16:46 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	mandelbrot(t_fractol fractol, int x, int y)
 
 void	render_image(t_fractol fractol)
 {
-
 	int	color;
 	int	iterations = 0;
 	int	x = 0;
@@ -104,7 +103,8 @@ void	render_image(t_fractol fractol)
 	{
 		while (x < fractol.image_width)
 		{
-			iterations = mandelbrot(fractol, x, y);
+			if (fractol.mandelbrot == 1)
+				iterations = mandelbrot(fractol, x, y);
 			color = get_color(iterations);
 			set_pixel_color(&fractol, x, y, color);
 			x++;
@@ -115,39 +115,55 @@ void	render_image(t_fractol fractol)
 	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
 }
 
-void	my_keyhook(mlx_key_data_t keydata, void *param)
+void	scroll_hook(double xdelta, double ydelta, void *param)
+{
+	t_fractol	*fractol = param;
+
+	xdelta++;
+	if (ydelta > 0)
+	{
+		fractol->complex_width = fractol->complex_width * 0.95;
+		//fractol->move_horizontal = fractol->move_horizontal * 1.1;
+		fractol->complex_heigth = fractol->complex_heigth * 0.95;
+		//fractol->move_vertical = fractol->move_vertical * 1.1;
+	
+	}
+	else if (ydelta < 0)
+	{
+		fractol->complex_width = fractol->complex_width * 1.05;
+		fractol->move_horizontal = fractol->move_horizontal - 0.1;
+		fractol->complex_heigth = fractol->complex_heigth * 1.05;
+		fractol->move_vertical = fractol->move_vertical - 0.1;
+	}
+	render_image(*fractol);
+}
+
+void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	
 	t_fractol	*fractol = param;
 
 	if (keydata.key == MLX_KEY_DOWN) // down
-	{
 		fractol->move_vertical = fractol->move_vertical + (fractol->complex_heigth / 50);
-	}
 	else if (keydata.key == MLX_KEY_UP) // up
-	{
 		fractol->move_vertical = fractol->move_vertical - (fractol->complex_heigth / 50);
-	}
 	else if (keydata.key == MLX_KEY_RIGHT) // right
-	{
 		fractol->move_horizontal = fractol->move_horizontal + (fractol->complex_width / 50);
-	}
 	else if (keydata.key == MLX_KEY_LEFT) // left
-	{
 		fractol->move_horizontal = fractol->move_horizontal - (fractol->complex_width / 50);
-	}
-	else if (keydata.key == MLX_KEY_SPACE) // zoom in spacebar
-	{
-		fractol->complex_width = fractol->complex_width * 0.95;
-		fractol->complex_heigth = fractol->complex_heigth * 0.95;
-	}
 	render_image(*fractol);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_fractol	fractol;
 
+	if (argc > 2)
+		fprintf(stderr, "too many args\n");
+	if (argc < 1)
+		fprintf(stderr, "too few args\n");
+	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
+		fractol.mandelbrot = 1;
 	// paramater setup, create function for?
 	fractol.window_width = 600;
 	fractol.window_heigth = 400;
@@ -158,6 +174,7 @@ int main(void)
 	fractol.move_horizontal = 0.0;
 	fractol.move_vertical = 0.0;
 	fractol.img_ptr = NULL;
+	fractol.zoom = 1;
 
 	// basic mlx and window setup
 	fractol.mlx_ptr = mlx_init(fractol.window_width, fractol.window_heigth, "fractol", true);
@@ -168,7 +185,8 @@ int main(void)
 	render_image(fractol);
 
 	// event setup and handling
-	mlx_key_hook(fractol.mlx_ptr, &my_keyhook, &fractol);
+	mlx_scroll_hook(fractol.mlx_ptr, &scroll_hook, &fractol);
+	mlx_key_hook(fractol.mlx_ptr, &key_hook, &fractol);
 	mlx_loop(fractol.mlx_ptr);
 
 	return (0);

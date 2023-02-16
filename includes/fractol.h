@@ -6,14 +6,14 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/02/14 17:49:41 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:58:57 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-//# include "libft/libft.h"
+# include "libft/libft.h"
 #include "MLX42.h"
 #include <stdio.h>
 #include <math.h>
@@ -22,6 +22,7 @@
 
 typedef struct s_fractol
 {
+	int			mandelbrot;
 	mlx_t		*mlx_ptr;
 	mlx_image_t	*img_ptr;
 	int     	window_width;
@@ -33,6 +34,8 @@ typedef struct s_fractol
 	double		move_vertical;
 	double		move_horizontal;
 	int			max_iterations;
+	double		zoom;
+
 }	t_fractol;
 
 // =====FUNCTIONS===============================================================

@@ -4,7 +4,6 @@ Fractol notes
 to do:
 - figure out coloring algorithm 
 - include julia set
-- change to mlx42
 - connect right controls
 
 
