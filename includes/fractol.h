@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/02/16 16:58:57 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:43:00 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,23 @@ typedef struct s_fractol
 	double		move_vertical;
 	double		move_horizontal;
 	int			max_iterations;
+	int			threshold;
+	int			z_n;
 	double		zoom;
-
+	double		change_color;
+	int			definition;
+	int			range;
+	int			division;
 }	t_fractol;
+
+typedef struct s_color
+{
+	int			**second;
+	int			**first;
+	int			range;
+	int			range_start;
+	int			division;
+}	t_color;
 
 // =====FUNCTIONS===============================================================
 

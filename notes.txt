@@ -5,6 +5,7 @@ to do:
 - figure out coloring algorithm 
 - include julia set
 - connect right controls
+- image size change with window
 
 
 
@@ -23,12 +24,6 @@ take iteration
 divide by max iter
 multiply by amount of colors 255
 end needs to be int because color value
-
-passing
-void (*)(struct mlx_key_data, struct s_fractol *)
-to
-void (*)(struct mlx_key_data, void *)
-
 
 original
 A R G B
