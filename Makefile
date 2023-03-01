@@ -1,14 +1,12 @@
-NAME	:= fractol
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
-LIBMLX	:= ./lib/MLX42
-
+NAME		= fractol
+CFLAGS		= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+LIBMLX		= ./lib/MLX42
 LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
 LIBFT_DIR	= includes/libft
-
-HEADERS	:= -I ./includes -I $(LIBMLX)/include
-LIBS	:= $(LIBMLX)/build/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
-SRCS	:= fractol.c
-OBJS	:= ${SRCS:.c=.o}
+HEADERS		= -I ./includes -I $(LIBMLX)/include
+LIBS		= $(LIBMLX)/build/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+SRCS		= fractol.c hooks.c coloring.c palette.c
+OBJS		= ${SRCS:.c=.o}
 
 all: libmlx $(NAME)
 
@@ -16,7 +14,7 @@ libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && echo "Compiling: $(notdir $<)" 
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)

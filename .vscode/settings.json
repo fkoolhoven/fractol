@@ -26,6 +26,7 @@
         "vector": "c",
         "__tuple": "c",
         "array": "c",
-        "utility": "c"
+        "utility": "c",
+        "fractol.h": "c"
     }
 }
