@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/04 16:41:30 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:33:36 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_fractol
 	float		move_horizontal;
 	int			max_iterations;
 	int			threshold;
-	int			z_n;
+	int			function_result;
 	float		zoom;
 	int			range;
 	int			division;

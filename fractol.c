@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/04 17:06:00 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:34:16 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 int	mandelbrot(t_fractol fractol, int x, int y)
 {
-	double	real_a;
-	double	imaginary_b;
-	double	z_real;
-	double	z_imaginary;
-	double	tmp;
+	double	x_scaled;
+	double	y_scaled;
+	double	real;
+	double	imaginary;
+	double	temp;
 
-	real_a 		= fractol.move_horizontal + (x - fractol.image_width / fractol.complex_heigth) * fractol.complex_width / fractol.image_width;
-	imaginary_b = fractol.move_vertical + (y - fractol.image_heigth / fractol.complex_heigth) * fractol.complex_width / fractol.image_width;
-	z_real = 0.0;
-	z_imaginary = 0.0;
+	x_scaled = fractol.move_horizontal + (x - fractol.image_width / fractol.complex_heigth) * fractol.complex_width / fractol.image_width;
+	y_scaled = fractol.move_vertical + (y - fractol.image_heigth / fractol.complex_heigth) * fractol.complex_width / fractol.image_width;
 	fractol.iterations = 0;
 	fractol.threshold = 4;
-	while (fractol.iterations < fractol.max_iterations)
+	real = 0.0;
+	imaginary = 0.0;
+	while ((real * real + imaginary * imaginary) < fractol.threshold && fractol.iterations < fractol.max_iterations)
 	{
-		fractol.z_n = z_real * z_real + z_imaginary * z_imaginary;
-		if (fractol.z_n > fractol.threshold)
-			return (fractol.iterations);
-		tmp = 2 * z_real * z_imaginary + imaginary_b;
-		z_real = z_real * z_real - z_imaginary * z_imaginary + real_a;
-		z_imaginary = tmp;
+		fractol.function_result = real * real + imaginary * imaginary;
+		temp = 2 * real * imaginary + y_scaled;
+		real = real * real - imaginary * imaginary + x_scaled;
+		imaginary = temp;
 		fractol.iterations++;
 	}
 	return (fractol.iterations);
