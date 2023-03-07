@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/04 16:41:32 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:29:28 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 		*fractol = zoom_in(*fractol, temp_width, temp_heigth);
 	else if (ydelta < 0)
 		*fractol = zoom_out(*fractol, temp_width, temp_heigth);
-	//printf("complex w = %f\ncomplex h = %f\n", fractol->complex_width, fractol->complex_heigth);
 	render_image(*fractol);
 }
 

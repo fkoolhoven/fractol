@@ -5,7 +5,7 @@ LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
 LIBFT_DIR	= includes/libft
 HEADERS		= -I ./includes -I $(LIBMLX)/include
 LIBS		= $(LIBMLX)/build/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
-SRCS		= fractol.c hooks.c coloring.c palette.c
+SRCS		= fractol.c hooks.c coloring.c palette.c mandelbrot.c
 OBJS		= ${SRCS:.c=.o}
 
 all: libmlx $(NAME)

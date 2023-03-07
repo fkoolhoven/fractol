@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/04 16:04:11 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:46:42 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	get_color(t_color c, int iterations, int x, int y)
 	unsigned int	color;
 	float			amount;
 
-	amount = normalize_iterations(c, iterations, x, y); // shouldn't be negative???
+	amount = normalize_iterations(c, iterations, x, y);
 	color = interpolate_color(*c.first[0], *c.second[0], amount) << 24;
 	color += interpolate_color(*c.first[1], *c.second[1], amount) << 16;
 	color += interpolate_color(*c.first[2], *c.second[2], amount) << 8;

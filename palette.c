@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/04 13:49:40 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:49:07 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static int	select_from_palette(const int range)
 {
 	int	colors[7];
 
-	colors[0] = 0x830713; // dark red
-	colors[1] = 0xC4F7FA; // light blue
-	colors[2] = 0x55149F; // dark purple
-	colors[3] = 0xFFCD03; // orange
-	colors[4] = 0xF30BEB; // pink
-	colors[5] = 0xC2FCC0; // pastel green
-	colors[6] = 0x176414; // dark green
+	colors[0] = 0x8CB5B5;
+	colors[1] = 0xEC410B;
+	colors[2] = 0x506432;
+	colors[3] = 0xFFA400;
+	colors[4] = 0xC0413B;
+	colors[5] = 0xB30019;
+	colors[6] = 0x80003A;
 	return (colors[range % 7]);
 }
 

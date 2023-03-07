@@ -6,36 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/07 11:16:48 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:28:47 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fractol.h"
-
-int	mandelbrot(t_fractol fractol, int x, int y)
-{
-	double	x_scaled;
-	double	y_scaled;
-	double	real;
-	double	imaginary;
-	double	temp;
-
-	x_scaled = fractol.move_horizontal + (x - fractol.image_width / fractol.complex_heigth) * fractol.complex_width / fractol.image_width;
-	y_scaled = fractol.move_vertical + (y - fractol.image_heigth / fractol.complex_heigth) * fractol.complex_width / fractol.image_width;
-	fractol.iterations = 0;
-	fractol.threshold = 4;
-	real = 0.0;
-	imaginary = 0.0;
-	while ((real * real + imaginary * imaginary) < fractol.threshold && fractol.iterations < fractol.max_iterations)
-	{
-		fractol.function_result = real * real + imaginary * imaginary;
-		temp = 2 * real * imaginary + y_scaled;
-		real = real * real - imaginary * imaginary + x_scaled;
-		imaginary = temp;
-		fractol.iterations++;
-	}
-	return (fractol.iterations);
-}
 
 void	render_image(t_fractol fractol)
 {
@@ -53,7 +28,7 @@ void	render_image(t_fractol fractol)
 		while (x < fractol.image_width)
 		{
 			if (fractol.mandelbrot == 1)
-				iterations = mandelbrot(fractol, x, y);
+				iterations = mandelbrot_fractal(fractol, x, y);
 			if (iterations == fractol.max_iterations)
 				color = 0x000000FF;
 			else
@@ -86,8 +61,9 @@ t_fractol	set_parameters(char **argv)
 	fractol.move_vertical = 0.0;
 	fractol.zoom = 1;
 	fractol.img_ptr = NULL;
-	fractol.max_iterations = 80;
-	fractol.mlx_ptr = mlx_init(fractol.window_width, fractol.window_heigth, "fractol", true);
+	fractol.max_iterations = 100;
+	fractol.mlx_ptr = mlx_init(fractol.window_width, fractol.window_heigth,
+			"fractol", true);
 	if (fractol.mlx_ptr == NULL)
 	{
 		ft_putendl_fd("Could not initialize a new MLX instance", 2);
@@ -105,13 +81,14 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Error: Too many arguments\n[./fractol] [fractaltype]", 2);
 		exit (EXIT_FAILURE);
 	}
-	if (argc < 2)
+	else if (argc < 2)
 	{
 		ft_putendl_fd("Error: Too few arguments\n[./fractol] [fractaltype]", 2);
 		exit (EXIT_FAILURE);
 	}
 	fractol = set_parameters(argv);
-	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width, fractol.image_heigth);
+	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width,
+			fractol.image_heigth);
 	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
 	render_image(fractol);
 	mlx_resize_hook(fractol.mlx_ptr, &resize_window, &fractol);
