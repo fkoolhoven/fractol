@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/07 12:29:28 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:57:38 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void	resize_window(int32_t width, int32_t height, void *param)
 	fractol = param;
 	fractol->image_width = width;
 	fractol->image_heigth = height;
+	fractol->img_ptr = mlx_new_image(fractol->mlx_ptr, fractol->image_width,
+			fractol->image_heigth);
 	render_image(*fractol);
 }

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/07 12:28:47 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:58:44 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	render_image(t_fractol fractol)
 {
-	t_color	palette;
 	int		color;
 	int		iterations;
 	int		x;
@@ -33,8 +32,8 @@ void	render_image(t_fractol fractol)
 				color = 0x000000FF;
 			else
 			{
-				palette = get_palette(iterations);
-				color = get_color(palette, iterations, x, y);
+				fractol.palette = get_palette(fractol, iterations);
+				color = get_color(fractol.palette, iterations, x, y);
 			}
 			set_pixel_color(&fractol, x, y, color);
 			x++;
@@ -90,6 +89,7 @@ int	main(int argc, char **argv)
 	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width,
 			fractol.image_heigth);
 	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
+	fractol.palette.converted_palette = convert_colors_to_rgb_arrays();
 	render_image(fractol);
 	mlx_resize_hook(fractol.mlx_ptr, &resize_window, &fractol);
 	mlx_scroll_hook(fractol.mlx_ptr, &scroll_hook, &fractol);

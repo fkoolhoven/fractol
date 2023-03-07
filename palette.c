@@ -6,13 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/07 11:49:07 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:49:47 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fractol.h"
 
-static int	select_from_palette(const int range)
+unsigned int	select_from_palette(const int select)
 {
 	int	colors[7];
 
@@ -23,36 +23,45 @@ static int	select_from_palette(const int range)
 	colors[4] = 0xC0413B;
 	colors[5] = 0xB30019;
 	colors[6] = 0x80003A;
-	return (colors[range % 7]);
+	return (colors[select]);
 }
 
-int	**get_rgb(unsigned int color)
+int	***convert_colors_to_rgb_arrays(void)
 {
-	int	**array;
-	int	i;
+	int				***palette;
+	int				i;
+	int				j;
+	unsigned int	color;
 
-	array = (int **)malloc(sizeof(int *) * 3);
-	i = 0;
-	while (i <= 3)
+	j = 0;
+	palette = (int ***)malloc(sizeof(int **) * 7);
+	while (j < 7)
 	{
-		array[i] = malloc(sizeof(int));
-		i++;
+		color = select_from_palette(j);
+		palette[j] = (int **)malloc(sizeof(int *) * 3);
+		i = 0;
+		while (i <= 3)
+		{
+			palette[j][i] = malloc(sizeof(int));
+			i++;
+		}
+		*palette[j][2] = color % 256;
+		*palette[j][1] = ((color - *palette[j][2]) / 256) % 256;
+		*palette[j][0] = ((color - *palette[j][1]) / 256 / 256)
+			- *palette[j][2] / 256;
+		j++;
 	}
-	*array[2] = color % 256;
-	*array[1] = ((color - *array[2]) / 256) % 256;
-	*array[0] = ((color - *array[1]) / 256 / 256) - *array[2] / 256;
-	return (array);
+	return (palette);
 }
 
-t_color	get_palette(int iterations)
+t_color	get_palette(t_fractol f, int iterations)
 {
-	t_color	palette;
 	int		range_end;
 
-	palette.range = 50;
-	palette.range_start = iterations - (iterations % 50);
-	range_end = palette.range_start + 50;
-	palette.first = get_rgb(select_from_palette(palette.range_start));
-	palette.second = get_rgb(select_from_palette(range_end));
-	return (palette);
+	f.palette.range = 50;
+	f.palette.range_start = iterations - (iterations % 50);
+	range_end = f.palette.range_start + 50;
+	f.palette.first = f.palette.converted_palette[f.palette.range_start % 7];
+	f.palette.second = f.palette.converted_palette[range_end % 7];
+	return (f.palette);
 }

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/07 12:30:24 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:58:26 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 # include <math.h>
 
 // =====STRUCTS=================================================================
+
+typedef struct s_color
+{
+	int			***converted_palette;
+	int			**second;
+	int			**first;
+	int			range;
+	int			range_start;
+	int			division;
+}	t_color;
 
 typedef struct s_fractol
 {
@@ -40,24 +50,17 @@ typedef struct s_fractol
 	float		zoom;
 	int			range;
 	int			division;
+	t_color		palette;
 }	t_fractol;
-
-typedef struct s_color
-{
-	int			**second;
-	int			**first;
-	int			range;
-	int			range_start;
-	int			division;
-}	t_color;
 
 // =====FUNCTIONS===============================================================
 
 int		mandelbrot_fractal(t_fractol fractol, int x, int y);
+int		***convert_colors_to_rgb_arrays(void);
 void	scroll_hook(double xdelta, double ydelta, void *param);
 void	key_hook(mlx_key_data_t keydata, void *param);
 void	resize_window(int32_t width, int32_t height, void *param);
-t_color	get_palette(int iterations);
+t_color	get_palette(t_fractol fractol, int iterations);
 int		get_color(t_color c, int iterations, int x, int y);
 void	set_pixel_color(t_fractol *fractol, int x, int y, int color);
 void	render_image(t_fractol fractol);

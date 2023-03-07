@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/07 11:46:42 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:44:53 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ void	set_pixel_color(t_fractol *fractol, int x, int y, int color)
 	fractol->img_ptr->pixels[first_byte + 3] = color;
 }
 
-void	free_palette(t_color c)
-{
-	int	i;
+// void	free_palette(t_color c)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i <= 3)
-	{
-		free(c.first[i]);
-		free(c.second[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i <= 3)
+// 	{
+// 		free(c.first[i]);
+// 		free(c.second[i]);
+// 		i++;
+// 	}
+// }
 
 int	interpolate_color(int first_color, int second_color, float amount)
 {
@@ -65,6 +65,6 @@ int	get_color(t_color c, int iterations, int x, int y)
 	color += interpolate_color(*c.first[1], *c.second[1], amount) << 16;
 	color += interpolate_color(*c.first[2], *c.second[2], amount) << 8;
 	color += 0xFF;
-	free_palette(c);
+	//free_palette(c);
 	return (color);
 }
