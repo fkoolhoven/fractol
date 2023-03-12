@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:47:18 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/12 18:01:05 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:24:07 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,16 @@ double	ft_atof(char *str)
 	return (number * negative);
 }
 
-
 int	julia_fractal(t_fractol fractol, int x, int y)
 {
 	double	x_scaled;
 	double	y_scaled;
 	double	temp;
-	
+
 	x_scaled = scale_x_coordinate(fractol, x);
 	y_scaled = scale_y_coordinate(fractol, y);
 	fractol.iterations = 0;
 	fractol.threshold = 4;
-
 	fractol.iterations = 0;
 	while ((y_scaled * y_scaled + x_scaled * x_scaled) < fractol.threshold
 		&& fractol.iterations < fractol.max_iterations)

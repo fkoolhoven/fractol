@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/12 18:26:13 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:24:54 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		ft_putendl_fd("Error: Too few arguments\nInput should be: [./fractol] [fractaltype]", 2);
+		ft_putendl_fd("Error: Too few arguments\n"
+			"Input should be: [./fractol] [fractaltype]", 2);
 		exit (EXIT_FAILURE);
 	}
 	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
@@ -61,7 +62,9 @@ int	main(int argc, char **argv)
 		fractol = set_parameters_julia(argc, argv);
 	else
 	{
-		ft_putendl_fd("Error: Incorrect fractaltype\nInput should be: [./fractol] [fractaltype]\nfractaltypes are: [mandelbrot] or [julia]", 2);
+		ft_putendl_fd("Error: Incorrect fractaltype\n"
+			"Input should be: [./fractol] [fractaltype]\n"
+			"Fractaltype options are: [mandelbrot] or [julia]", 2);
 		exit (EXIT_FAILURE);
 	}
 	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width,
@@ -74,5 +77,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(fractol.mlx_ptr, &key_hook, &fractol);
 	mlx_loop(fractol.mlx_ptr);
 	mlx_delete_image(fractol.mlx_ptr, fractol.img_ptr);
+	// free palette
 	return (EXIT_SUCCESS);
 }
