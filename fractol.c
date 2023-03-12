@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/08 16:20:28 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:26:13 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	render_image(t_fractol fractol)
 				iterations = mandelbrot_fractal(fractol, x, y);
 			else if (fractol.julia == 1)
 				iterations = julia_fractal(fractol, x, y);
-			//printf("iterations = %i\nmax = %i\n", iterations, fractol.max_iterations);
 			if (iterations == fractol.max_iterations)
 				color = 0x000000FF;
 			else
@@ -47,54 +46,24 @@ void	render_image(t_fractol fractol)
 	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
 }
 
-t_fractol	set_parameters(char **argv)
-{
-	t_fractol	fractol;
-
-	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
-		fractol.mandelbrot = 1;
-	else if (ft_strncmp(argv[1], "julia", 6) == 0)
-	{
-		fractol.julia = 1;
-		fractol.c = ft_atoi(argv[2]);
-	}
-		
-	fractol.window_width = 400;
-	fractol.window_heigth = 300;
-	fractol.image_width = fractol.window_width;
-	fractol.image_heigth = fractol.window_heigth;
-	fractol.complex_width = 4.0;
-	fractol.complex_heigth = 2.0;
-	fractol.move_horizontal = 0.0;
-	fractol.move_vertical = 0.0;
-	fractol.zoom = 1;
-	fractol.img_ptr = NULL;
-	fractol.max_iterations = 100;
-	fractol.mlx_ptr = mlx_init(fractol.window_width, fractol.window_heigth,
-			"fractol", true);
-	if (fractol.mlx_ptr == NULL)
-	{
-		ft_putendl_fd("Could not initialize a new MLX instance", 2);
-		exit (EXIT_FAILURE);
-	}
-	return (fractol);
-}
-
 int	main(int argc, char **argv)
 {
 	t_fractol	fractol;
 
-	// if (argc > 2)
-	// {
-	// 	ft_putendl_fd("Error: Too many arguments\n[./fractol] [fractaltype]", 2);
-	// 	exit (EXIT_FAILURE);
-	// }
 	if (argc < 2)
 	{
-		ft_putendl_fd("Error: Too few arguments\n[./fractol] [fractaltype]", 2);
+		ft_putendl_fd("Error: Too few arguments\nInput should be: [./fractol] [fractaltype]", 2);
 		exit (EXIT_FAILURE);
 	}
-	fractol = set_parameters(argv);
+	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
+		fractol = set_parameters_mandelbrot(argc);
+	else if (ft_strncmp(argv[1], "julia", 6) == 0)
+		fractol = set_parameters_julia(argc, argv);
+	else
+	{
+		ft_putendl_fd("Error: Incorrect fractaltype\nInput should be: [./fractol] [fractaltype]\nfractaltypes are: [mandelbrot] or [julia]", 2);
+		exit (EXIT_FAILURE);
+	}
 	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width,
 			fractol.image_heigth);
 	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);

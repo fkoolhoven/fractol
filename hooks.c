@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/07 17:57:38 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:33:09 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_fractol	zoom_out(t_fractol fractol, double temp_width, double temp_heigth)
 	fractol.move_horizontal -= (fractol.complex_width - temp_width) / 2;
 	fractol.complex_heigth = fractol.complex_heigth * 1.05;
 	fractol.move_vertical -= (fractol.complex_heigth - temp_heigth) / 2;
-	if (fractol.max_iterations != 50)
+	if (fractol.max_iterations != 100)
 		fractol.max_iterations--;
 	return (fractol);
 }

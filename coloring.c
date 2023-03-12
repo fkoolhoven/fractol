@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/08 15:43:00 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:44:06 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ float	normalize_iterations(t_color c, int iterations, int x, int y)
 	current_log = log(x * x + y * y) / 2;
 	amount = iterations - (log((current_log) / log(2)) / log(2)) + 3;
 	amount = (amount - c.range_start) / c.range;
+	if (amount > 1)
+		amount = 1;
+	else if (amount < 0)
+		amount = 0; 
 	return (amount);
 }
 

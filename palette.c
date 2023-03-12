@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/07 17:49:47 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:32:11 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ t_color	get_palette(t_fractol f, int iterations)
 {
 	int		range_end;
 
-	f.palette.range = 50;
-	f.palette.range_start = iterations - (iterations % 50);
-	range_end = f.palette.range_start + 50;
+	f.palette.range_start = iterations - (iterations % f.palette.range);
+	range_end = f.palette.range_start + f.palette.range;
 	f.palette.first = f.palette.converted_palette[f.palette.range_start % 7];
 	f.palette.second = f.palette.converted_palette[range_end % 7];
 	return (f.palette);
