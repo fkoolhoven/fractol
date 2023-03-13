@@ -5,7 +5,7 @@ LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
 LIBFT_DIR	= includes/libft
 HEADERS		= -I ./includes -I $(LIBMLX)/include
 LIBS		= $(LIBMLX)/build/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
-SRCS		= main.c parameters.c hooks.c coloring.c palette.c fractals.c
+SRCS		= main.c parameters.c hooks.c coloring.c palette.c fractals.c render.c
 SRC_DIR 	= sources
 OBJS		= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 OBJ_DIR 	= objects

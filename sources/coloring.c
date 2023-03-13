@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 13:10:11 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:20:49 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	set_pixel_color(t_fractol *fractol, int x, int y, int color)
 	fractol->img_ptr->pixels[first_byte + 3] = color;
 }
 
-int	interpolate_color(int first_color, int second_color, float amount)
+static int	interpolate_color(int first_color, int second_color, float amount)
 {
 	int	result;
 
@@ -31,7 +31,7 @@ int	interpolate_color(int first_color, int second_color, float amount)
 	return (result);
 }
 
-float	normalize_iterations(t_palette c, int iterations, int x, int y)
+static float	normalize_iterations(t_palette c, int iterations, int x, int y)
 {
 	float	amount;
 	float	current_log;

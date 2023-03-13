@@ -6,32 +6,32 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 13:13:54 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:27:26 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-t_fractol	zoom_out(t_fractol fractol, double temp_width, double temp_heigth)
+static t_fractol	zoom_out(t_fractol f, double temp_width, double temp_heigth)
 {
-	fractol.complex_width *= 1.05;
-	fractol.move_horizontal -= (fractol.complex_width - temp_width) / 2;
-	fractol.complex_heigth *= 1.05;
-	fractol.move_vertical -= (fractol.complex_heigth - temp_heigth) / 2;
-	if (fractol.max_iterations != 100)
-		fractol.max_iterations--;
-	return (fractol);
+	f.complex_width *= 1.05;
+	f.move_horizontal -= (f.complex_width - temp_width) / 2;
+	f.complex_heigth *= 1.05;
+	f.move_vertical -= (f.complex_heigth - temp_heigth) / 2;
+	if (f.max_iterations != 100)
+		f.max_iterations--;
+	return (f);
 }
 
-t_fractol	zoom_in(t_fractol fractol, double temp_width, double temp_heigth)
+static t_fractol	zoom_in(t_fractol f, double temp_width, double temp_heigth)
 {
-	fractol.complex_width *= 0.95;
-	fractol.move_horizontal += (temp_width - fractol.complex_width) / 2;
-	fractol.complex_heigth *= 0.95;
-	fractol.move_vertical += (temp_heigth - fractol.complex_heigth) / 2;
-	if (fractol.complex_width < 4.0)
-		fractol.max_iterations++;
-	return (fractol);
+	f.complex_width *= 0.95;
+	f.move_horizontal += (temp_width - f.complex_width) / 2;
+	f.complex_heigth *= 0.95;
+	f.move_vertical += (temp_heigth - f.complex_heigth) / 2;
+	if (f.complex_width < 4.0)
+		f.max_iterations++;
+	return (f);
 }
 
 void	scroll_hook(double xdelta, double ydelta, void *param)
@@ -59,7 +59,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_DOWN)
 		fractol->move_vertical += fractol->complex_heigth / 50;
 	else if (keydata.key == MLX_KEY_UP)
-		fractol->move_vertical -= fractol->complex_heigth / 50;
+		fractol->move_vertical -= fractol->complex_heigth / 50;	
 	else if (keydata.key == MLX_KEY_RIGHT)
 		fractol->move_horizontal += fractol->complex_width / 50;
 	else if (keydata.key == MLX_KEY_LEFT)

@@ -6,13 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 13:10:09 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:27:29 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-t_fractol	set_general_parameters(t_fractol fractol)
+static t_fractol	set_general_parameters(t_fractol fractol)
 {
 	fractol.window_width = 400;
 	fractol.window_heigth = 300;
@@ -49,8 +49,7 @@ t_fractol	set_parameters_julia(int argc, char **argv)
 	}
 	fractol.c_real = ft_atof(argv[2]);
 	fractol.c_imaginary = ft_atof(argv[3]);
-	if (fractol.c_real == -42 || fractol.c_imaginary == -42
-		|| fractol.c_real < -2.0 || fractol.c_real > 2.0
+	if (fractol.c_real < -2.0 || fractol.c_real > 2.0
 		|| fractol.c_imaginary < -2.0 || fractol.c_imaginary > 2.0)
 	{
 		ft_putendl_fd("Error: Julia parameters must be fractional numbers "
