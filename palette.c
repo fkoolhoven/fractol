@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 10:29:38 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:26:28 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,25 @@
 
 unsigned int	select_from_palette(const int select)
 {
-	int	colors[7];
+	int	color[16];
 
-	colors[0] = 0x8CB5B5;
-	colors[1] = 0xEC410B;
-	colors[2] = 0x506432;
-	colors[3] = 0xFFA400;
-	colors[4] = 0xC0413B;
-	colors[5] = 0xB30019;
-	colors[6] = 0x80003A;
-	return (colors[select]);
+	color[0] = 0x00235B;
+	color[1] = 0xE21818;
+	color[2] = 0xFFDD83;
+	color[3] = 0x98DFD6;
+	color[4] = 0x000764;
+	color[5] = 0x539165;
+	color[6] = 0x3F497F;
+	color[7] = 0xF7C04A;
+	color[8] = 0xF7C04A;
+	color[9] = 0xF8F5E4;
+	color[10] = 0xE9A178;
+	color[11] = 0xA84448;
+	color[12] = 0x7A3E65;
+	color[13] = 0x2E4F4F;
+	color[14] = 0x2C3333;
+	color[15] = 0xCCD5AE;
+	return (color[select]);
 }
 
 int	***convert_colors_to_rgb_arrays(void)
@@ -34,8 +43,8 @@ int	***convert_colors_to_rgb_arrays(void)
 	unsigned int	color;
 
 	j = 0;
-	palette = (int ***)malloc(sizeof(int **) * 7);
-	while (j < 7)
+	palette = (int ***)malloc(sizeof(int **) * 16);
+	while (j < 16)
 	{
 		color = select_from_palette(j);
 		palette[j] = (int **)malloc(sizeof(int *) * 3);
@@ -60,7 +69,7 @@ t_color	get_palette(t_fractol f, int iterations)
 
 	f.palette.range_start = iterations - (iterations % f.palette.range);
 	range_end = f.palette.range_start + f.palette.range;
-	f.palette.first = f.palette.converted_palette[f.palette.range_start % 7];
-	f.palette.second = f.palette.converted_palette[range_end % 7];
+	f.palette.first = f.palette.converted_palette[f.palette.range_start / f.palette.range % 16];
+	f.palette.second = f.palette.converted_palette[range_end / f.palette.range % 16];
 	return (f.palette);
 }

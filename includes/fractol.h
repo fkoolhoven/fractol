@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/12 18:10:22 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:26:21 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ typedef struct s_color
 	int			**first;
 	int			range;
 	int			range_start;
-	int			division;
+	int			modulo;
 }	t_color;
 
 typedef struct s_fractol
 {
 	int			mandelbrot;
 	int			julia;
-	float		c_real;
-	float		c_imaginary;
+	double		c_real;
+	double		c_imaginary;
 	int			iterations;
 	mlx_t		*mlx_ptr;
 	mlx_image_t	*img_ptr;

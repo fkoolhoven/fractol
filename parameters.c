@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 10:52:30 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:26:31 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_fractol	set_parameters_mandelbrot(int argc)
 			"Input should be: [./fractol] [mandelbrot]", 2);
 		exit (EXIT_FAILURE);
 	}
-	fractol.palette.range = 50;
+	fractol.palette.range = 45;
 	fractol.mandelbrot = 1;
 	fractol = set_general_parameters(fractol);
 	return (fractol);
