@@ -6,11 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:28:49 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 12:48:05 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:09:52 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "../includes/fractol.h"
 
 double	scale_y_coordinate(t_fractol fractol, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/13 12:47:48 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:14:01 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "../includes/fractol.h"
 
 void	render_image(t_fractol fractol)
 {

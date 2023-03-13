@@ -6,11 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 13:05:15 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:13:54 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "../includes/fractol.h"
 
 t_fractol	zoom_out(t_fractol fractol, double temp_width, double temp_heigth)
 {

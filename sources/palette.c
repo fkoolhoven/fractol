@@ -6,11 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 12:54:09 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:10:07 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "../includes/fractol.h"
 
 unsigned int	select_from_palette(const int select)
 {

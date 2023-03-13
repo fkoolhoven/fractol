@@ -6,11 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 12:26:31 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:10:09 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "../includes/fractol.h"
 
 t_fractol	set_general_parameters(t_fractol fractol)
 {
