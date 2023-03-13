@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/13 12:26:14 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:47:48 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int argc, char **argv)
 	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width,
 			fractol.image_heigth);
 	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
-	fractol.palette.converted_palette = convert_colors_to_rgb_arrays();
+	fractol.palette.converted = convert_colors_to_rgb_arrays();
 	render_image(fractol);
 	mlx_resize_hook(fractol.mlx_ptr, &resize_window, &fractol);
 	mlx_scroll_hook(fractol.mlx_ptr, &scroll_hook, &fractol);

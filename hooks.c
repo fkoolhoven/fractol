@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 12:29:19 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:05:15 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_fractol	zoom_out(t_fractol fractol, double temp_width, double temp_heigth)
 {
-	fractol.complex_width = fractol.complex_width * 1.05;
+	fractol.complex_width *= 1.05;
 	fractol.move_horizontal -= (fractol.complex_width - temp_width) / 2;
-	fractol.complex_heigth = fractol.complex_heigth * 1.05;
+	fractol.complex_heigth *= 1.05;
 	fractol.move_vertical -= (fractol.complex_heigth - temp_heigth) / 2;
 	if (fractol.max_iterations != 100)
 		fractol.max_iterations--;
@@ -25,9 +25,9 @@ t_fractol	zoom_out(t_fractol fractol, double temp_width, double temp_heigth)
 
 t_fractol	zoom_in(t_fractol fractol, double temp_width, double temp_heigth)
 {
-	fractol.complex_width = fractol.complex_width * 0.95;
+	fractol.complex_width *= 0.95;
 	fractol.move_horizontal += (temp_width - fractol.complex_width) / 2;
-	fractol.complex_heigth = fractol.complex_heigth * 0.95;
+	fractol.complex_heigth *= 0.95;
 	fractol.move_vertical += (temp_heigth - fractol.complex_heigth) / 2;
 	if (fractol.complex_width < 4.0)
 		fractol.max_iterations++;

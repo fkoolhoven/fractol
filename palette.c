@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 12:26:28 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:54:09 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,17 @@ int	***convert_colors_to_rgb_arrays(void)
 	return (palette);
 }
 
-t_color	get_palette(t_fractol f, int iterations)
+t_palette	get_palette(t_fractol f, int iterations)
 {
-	int		range_end;
+	int	range_end;
+	int	select_first_color;
+	int	select_second_color;
 
 	f.palette.range_start = iterations - (iterations % f.palette.range);
 	range_end = f.palette.range_start + f.palette.range;
-	f.palette.first = f.palette.converted_palette[f.palette.range_start / f.palette.range % 16];
-	f.palette.second = f.palette.converted_palette[range_end / f.palette.range % 16];
+	select_first_color = f.palette.range_start / f.palette.range % 16;
+	select_second_color = range_end / f.palette.range % 16;
+	f.palette.first = f.palette.converted[select_first_color];
+	f.palette.second = f.palette.converted[select_second_color];
 	return (f.palette);
 }

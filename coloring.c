@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 12:26:19 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:04:01 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	interpolate_color(int first_color, int second_color, float amount)
 	return (result);
 }
 
-float	normalize_iterations(t_color c, int iterations, int x, int y)
+float	normalize_iterations(t_palette c, int iterations, int x, int y)
 {
 	float	amount;
 	float	current_log;
@@ -42,11 +42,11 @@ float	normalize_iterations(t_color c, int iterations, int x, int y)
 	if (amount > 1)
 		amount = 1;
 	else if (amount < 0)
-		amount = 0; 
+		amount = 0;
 	return (amount);
 }
 
-int	get_color(t_color c, int iterations, int x, int y)
+int	get_color(t_palette c, int iterations, int x, int y)
 {
 	unsigned int	color;
 	float			amount;
