@@ -6,45 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:47:18 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/12 19:24:07 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:37:43 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fractol.h"
-
-double	ft_atof(char *str)
-{
-	double	number;
-	int		negative;
-	int		i;
-	double	div;
-
-	number = 0;
-	negative = 1;
-	div = 0.1;
-	i = 0;
-	if (str[i] == '-')
-	{
-		negative = -1;
-		i++;
-	}
-	while (str[i] && ft_isdigit(str[i]) && str[i] != '.')
-	{
-		number = (number * 10.0) + (str[i] - '0');
-		i++;
-	}
-	if (str[i] == '.')
-		i++;
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		number = number + ((str[i] - '0') * div);
-		div *= 0.1;
-		i++;
-	}
-	if (str[i] && !ft_isdigit(str[i]))
-		return (-42);
-	return (number * negative);
-}
 
 int	julia_fractal(t_fractol fractol, int x, int y)
 {

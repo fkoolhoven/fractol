@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/12 19:21:27 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:52:30 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_fractol	set_parameters_julia(int argc, char **argv)
 	}
 	fractol.palette.range = 20;
 	fractol.julia = 1;
+	fractol = set_general_parameters(fractol);
 	return (fractol);
 }
 
