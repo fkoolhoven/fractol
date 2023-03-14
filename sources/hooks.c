@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 18:27:26 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:58:39 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_DOWN)
 		fractol->move_vertical += fractol->complex_heigth / 50;
 	else if (keydata.key == MLX_KEY_UP)
-		fractol->move_vertical -= fractol->complex_heigth / 50;	
+		fractol->move_vertical -= fractol->complex_heigth / 50;
 	else if (keydata.key == MLX_KEY_RIGHT)
 		fractol->move_horizontal += fractol->complex_width / 50;
 	else if (keydata.key == MLX_KEY_LEFT)
@@ -69,14 +69,20 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		render_image(*fractol);
 }
 
-void	resize_window(int32_t width, int32_t height, void *param)
+void	loop_hook(void *param)
 {
 	t_fractol	*fractol;
 
 	fractol = param;
-	fractol->image_width = width;
-	fractol->image_heigth = height;
-	fractol->img_ptr = mlx_new_image(fractol->mlx_ptr, fractol->image_width,
-			fractol->image_heigth);
-	render_image(*fractol);
+	if (fractol->mlx_ptr->width != fractol->window_width
+		|| fractol->mlx_ptr->height != fractol->window_heigth)
+	{
+		fractol->window_width = fractol->mlx_ptr->width;
+		fractol->window_heigth = fractol->mlx_ptr->height;
+		fractol->image_width = fractol->window_width;
+		fractol->image_heigth = fractol->window_heigth;
+		mlx_resize_image(fractol->img_ptr,
+			fractol->image_width, fractol->image_heigth);
+		render_image(*fractol);
+	}
 }

@@ -6,23 +6,18 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:28:49 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 18:27:27 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:16:04 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-// real_a 	v  = fractol.move_horizontal + (x - fractol.image_width  / fractol.complex_heigth ) * fractol.complex_width / fractol.image_width;
-// imaginary_b = fractol.move_vertical   + (y - fractol.image_heigth / fractol.complex_heigth ) * fractol.complex_width / fractol.image_width;
-//	0 + (0 - 300 / 2) * 4 / 400
-
-
 static double	scale_y_coordinate(t_fractol fractol, int y)
 {
 	double	y_scaled;
 
-	y_scaled = y - fractol.image_heigth / fractol.complex_heigth; // 300 / 3
-	y_scaled *= fractol.complex_width / fractol.image_width; // 4 / 400
+	y_scaled = y - fractol.image_heigth / fractol.complex_heigth;
+	y_scaled *= fractol.complex_width / fractol.image_width;
 	y_scaled += fractol.move_vertical;
 	y_scaled *= -1;
 	return (y_scaled);

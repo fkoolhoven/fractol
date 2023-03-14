@@ -6,22 +6,27 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/13 18:27:32 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:59:01 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static t_fractol	basic_setup(t_fractol fractol)
+t_fractol	basic_setup(t_fractol fractol)
 {
 	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width,
-			fractol.image_heigth); // check
+			fractol.image_heigth);
+	if (fractol.img_ptr == NULL)
+	{
+		ft_putendl_fd("Could not allocate new image buffer", 2);
+		exit (EXIT_FAILURE);
+	}
 	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
 	fractol.palette.converted = convert_colors_to_rgb_arrays();
 	render_image(fractol);
-	mlx_resize_hook(fractol.mlx_ptr, &resize_window, &fractol);
 	mlx_scroll_hook(fractol.mlx_ptr, &scroll_hook, &fractol);
 	mlx_key_hook(fractol.mlx_ptr, &key_hook, &fractol);
+	mlx_loop_hook(fractol.mlx_ptr, &loop_hook, &fractol);
 	return (fractol);
 }
 
@@ -48,8 +53,9 @@ int	main(int argc, char **argv)
 	}
 	fractol = basic_setup(fractol);
 	mlx_loop(fractol.mlx_ptr);
-	mlx_delete_image(fractol.mlx_ptr, fractol.img_ptr);
+	// mlx_delete_image(fractol.mlx_ptr, fractol.img_ptr);
 	// free palette
 	// add close hook?
+	// resizing problem...
 	return (EXIT_SUCCESS);
 }
