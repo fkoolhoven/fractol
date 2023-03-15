@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/15 15:25:52 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:34:27 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
-# include "MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <math.h>
 

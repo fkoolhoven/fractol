@@ -23,10 +23,10 @@ $(NAME): $(OBJECTS)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) $(OBJBONUS) $(OBJECTS)
+	@$(RM) $(OBJBONUS) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

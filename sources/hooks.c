@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 15:02:53 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:57:35 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ void	key_press(mlx_key_data_t keydata, void *param)
 	t_fractol	*fractol;
 
 	fractol = param;
+	if (keydata.key == MLX_KEY_ESCAPE)
+	{
+		free_palette(fractol->palette.converted);
+		mlx_delete_image(fractol->mlx_ptr, fractol->img_ptr);
+		exit (EXIT_SUCCESS);
+	}
 	if (keydata.key == MLX_KEY_DOWN)
 		fractol->move_vertical += fractol->complex_height / 50;
 	else if (keydata.key == MLX_KEY_UP)
