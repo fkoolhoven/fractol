@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 15:36:13 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:48:35 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static t_fractol	set_general_parameters(t_fractol fractol)
 	fractol.complex_height = 2.0;
 	fractol.move_horizontal = 0.0;
 	fractol.move_vertical = 0.0;
+	fractol.threshold = 4;
 	fractol.max_iterations = 100;
 	return (fractol);
 }

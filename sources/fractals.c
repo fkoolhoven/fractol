@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:28:49 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 13:05:33 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:07:33 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	julia_fractal(t_fractol fractol, int x, int y)
 	x_scaled = scale_x_coordinate(fractol, x);
 	y_scaled = scale_y_coordinate(fractol, y);
 	fractol.iterations = 0;
-	fractol.threshold = 4;
 	while ((y_scaled * y_scaled + x_scaled * x_scaled) < fractol.threshold
 		&& fractol.iterations < fractol.max_iterations)
 	{
@@ -67,7 +66,6 @@ int	mandelbrot_fractal(t_fractol fractol, int x, int y)
 	real = 0.0;
 	imaginary = 0.0;
 	fractol.iterations = 0;
-	fractol.threshold = 4;
 	while ((real * real + imaginary * imaginary) < fractol.threshold
 		&& fractol.iterations < fractol.max_iterations)
 	{
