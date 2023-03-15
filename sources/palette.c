@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 14:19:58 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 10:56:34 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,29 @@ int	***convert_colors_to_rgb_arrays(void)
 
 	j = 0;
 	palette = (int ***)malloc(sizeof(int **) * 16);
+	if (palette == NULL)
+	{
+		printf("malloc error1\n");
+		exit (EXIT_FAILURE);
+	}
 	while (j < 16)
 	{
 		color = select_from_palette(j);
 		palette[j] = (int **)malloc(sizeof(int *) * 3);
+		if (palette[j] == NULL)
+		{
+			printf("malloc error2\n");
+			exit (EXIT_FAILURE);
+		}
 		i = 0;
 		while (i <= 3)
 		{
 			palette[j][i] = malloc(sizeof(int));
+			if (palette[j][i] == NULL)
+			{
+				printf("malloc error3\n");
+				exit (EXIT_FAILURE);
+			}
 			i++;
 		}
 		*palette[j][2] = color % 256;

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 18:27:29 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 10:50:21 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static t_fractol	set_general_parameters(t_fractol fractol)
 {
 	fractol.window_width = 400;
-	fractol.window_heigth = 300;
+	fractol.window_height = 300;
 	fractol.image_width = fractol.window_width;
-	fractol.image_heigth = fractol.window_heigth;
+	fractol.image_height = fractol.window_height;
 	fractol.complex_width = 4.0;
-	fractol.complex_heigth = 2.0;
+	fractol.complex_height = 2.0;
 	fractol.move_horizontal = 0.0;
 	fractol.move_vertical = 0.0;
 	fractol.zoom = 1;
 	fractol.img_ptr = NULL;
 	fractol.max_iterations = 100;
-	fractol.mlx_ptr = mlx_init(fractol.window_width, fractol.window_heigth,
+	fractol.mlx_ptr = mlx_init(fractol.window_width, fractol.window_height,
 			"fractol", true);
 	if (fractol.mlx_ptr == NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:17:11 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/14 20:59:11 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:25:28 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	render_image(t_fractol fractol)
 
 	x = 0;
 	y = 0;
-	while (y <= fractol.image_heigth)
+	while (y < fractol.image_height)
 	{
-		while (x <= fractol.image_width)
+		while (x < fractol.image_width)
 		{
 			color = get_pixel_color(fractol, x, y);
-			set_pixel_color(&fractol, x, y, color);
+			mlx_put_pixel(fractol.img_ptr, x, y, color);
 			x++;
 		}
 		x = 0;

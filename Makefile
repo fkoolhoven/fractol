@@ -13,7 +13,7 @@ OBJ_DIR 	= objects
 all: libmlx $(NAME)
 
 libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@cmake -DDEBUG=1 $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)

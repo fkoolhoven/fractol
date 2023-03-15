@@ -6,22 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 14:20:49 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:24:57 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-void	set_pixel_color(t_fractol *fractol, int x, int y, int color)
-{
-	int	first_byte;
-
-	first_byte = x * 4 + y * fractol->image_width * 4;
-	fractol->img_ptr->pixels[first_byte + 0] = color >> 24;
-	fractol->img_ptr->pixels[first_byte + 1] = color >> 16;
-	fractol->img_ptr->pixels[first_byte + 2] = color >> 8;
-	fractol->img_ptr->pixels[first_byte + 3] = color;
-}
 
 static int	interpolate_color(int first_color, int second_color, float amount)
 {

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/14 20:58:51 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:34:43 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ typedef struct s_fractol
 	mlx_t			*mlx_ptr;
 	mlx_image_t		*img_ptr;
 	int				window_width;
-	int				window_heigth;
+	int				window_height;
 	int				image_width;
-	int				image_heigth;
+	int				image_height;
 	double			complex_width;
-	double			complex_heigth;
+	double			complex_height;
 	double			move_horizontal;
 	double			move_vertical;
 	int				max_iterations;
@@ -60,11 +60,10 @@ void		render_image(t_fractol fractol);
 int			mandelbrot_fractal(t_fractol fractol, int x, int y);
 int			julia_fractal(t_fractol fractol, int x, int y);
 int			***convert_colors_to_rgb_arrays(void);
-void		scroll_hook(double xdelta, double ydelta, void *param);
-void		key_hook(mlx_key_data_t keydata, void *param);
+void		mouse_scroll(double xdelta, double ydelta, void *param);
+void		key_press(mlx_key_data_t keydata, void *param);
 t_palette	get_palette(t_fractol fractol, int iterations);
 int			get_color(t_palette c, int iterations, int x, int y);
-void		set_pixel_color(t_fractol *fractol, int x, int y, int color);
-void		loop_hook(void *param);
+void		resize_window(int32_t width, int32_t height, void *param);
 
 #endif

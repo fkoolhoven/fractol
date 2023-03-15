@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:28:49 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/14 17:16:04 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 10:51:43 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static double	scale_y_coordinate(t_fractol fractol, int y)
 {
 	double	y_scaled;
 
-	y_scaled = y - fractol.image_heigth / fractol.complex_heigth;
+	y_scaled = y - fractol.image_height / fractol.complex_height;
 	y_scaled *= fractol.complex_width / fractol.image_width;
 	y_scaled += fractol.move_vertical;
 	y_scaled *= -1;
@@ -27,7 +27,7 @@ static double	scale_x_coordinate(t_fractol fractol, int x)
 {
 	double	x_scaled;
 
-	x_scaled = x - fractol.image_width / fractol.complex_heigth;
+	x_scaled = x - fractol.image_width / fractol.complex_height;
 	x_scaled *= fractol.complex_width / fractol.image_width;
 	x_scaled += fractol.move_horizontal;
 	return (x_scaled);
