@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   ft_atod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 10:37:46 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/13 12:02:20 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:26:14 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static double	convert_to_double(char *str, int i)
 	return (number);
 }
 
-double	ft_atof(char *str)
+double	ft_atod(char *str)
 {
 	double	number;
 	int		negative;

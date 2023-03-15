@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/15 13:08:06 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:25:52 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_fractol
 	double			move_vertical;
 	int				max_iterations;
 	int				threshold;
-	float			zoom;
 	t_palette		palette;
 }	t_fractol;
 

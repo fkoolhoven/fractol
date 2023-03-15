@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 11:33:50 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:02:53 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,15 @@ static t_fractol	zoom_in(t_fractol f, double temp_width, double temp_height)
 
 void	mouse_scroll(double xdelta, double ydelta, void *param)
 {
-	t_fractol	*fractol;
-	double		temp_width;
-	double		temp_height;
+	t_fractol	*f;
 
-	fractol = param;
-	temp_width = fractol->complex_width;
-	temp_height = fractol->complex_height;
+	f = param;
 	xdelta = 0;
 	if (ydelta > 0)
-		*fractol = zoom_in(*fractol, temp_width, temp_height);
+		*f = zoom_in(*f, f->complex_width, f->complex_height);
 	else if (ydelta < 0)
-		*fractol = zoom_out(*fractol, temp_width, temp_height);
-	render_image(*fractol);
+		*f = zoom_out(*f, f->complex_width, f->complex_height);
+	render_image(*f);
 }
 
 void	key_press(mlx_key_data_t keydata, void *param)
