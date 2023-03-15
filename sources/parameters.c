@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 10:50:21 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:00:13 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_fractol	set_general_parameters(t_fractol fractol)
 			"fractol", true);
 	if (fractol.mlx_ptr == NULL)
 	{
-		ft_putendl_fd("Could not initialize a new MLX instance", 2);
+		ft_putendl_fd("Could not initialize a new MLX instance", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
 	return (fractol);
@@ -44,7 +44,7 @@ t_fractol	set_parameters_julia(int argc, char **argv)
 		ft_putendl_fd("Error: Incorrect number of arguments.\n"
 			"Input should be: [./fractol] [julia]"
 			"[real component of c] [imaginary component of c]\n"
-			"For example: ./fractol julia 0.4 0.2", 2);
+			"For example: ./fractol julia 0.4 0.2", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
 	fractol.c_real = ft_atof(argv[2]);
@@ -54,7 +54,7 @@ t_fractol	set_parameters_julia(int argc, char **argv)
 	{
 		ft_putendl_fd("Error: Julia parameters must be fractional numbers "
 			"between -2.0 and 2.0. No spaces allowed.\n"
-			"For example: ./fractol julia 0.4 0.2", 2);
+			"For example: ./fractol julia 0.4 0.2", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
 	fractol.palette.range = 20;
@@ -70,7 +70,7 @@ t_fractol	set_parameters_mandelbrot(int argc)
 	if (argc > 2)
 	{
 		ft_putendl_fd("Error: Too many arguments.\n"
-			"Input should be: [./fractol] [mandelbrot]", 2);
+			"Input should be: [./fractol] [mandelbrot]", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
 	fractol.palette.range = 45;

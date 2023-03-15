@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:17:11 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 11:25:28 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:07:34 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static unsigned int	get_pixel_color(t_fractol fractol, int x, int y)
 		return (0x000000FF);
 	else
 	{
-		fractol.palette = get_palette(fractol, iterations);
+		fractol.palette = get_color_range(fractol, iterations);
 		color = get_color(fractol.palette, iterations, x, y);
 		return (color);
 	}

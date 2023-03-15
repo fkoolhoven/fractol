@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 11:24:57 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:07:28 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,19 @@ int	get_color(t_palette c, int iterations, int x, int y)
 	color += interpolate_color(*c.first[2], *c.second[2], amount) << 8;
 	color += 0xFF;
 	return (color);
+}
+
+t_palette	get_color_range(t_fractol f, int iterations)
+{
+	int	range_end;
+	int	select_first_color;
+	int	select_second_color;
+
+	f.palette.range_start = iterations - (iterations % f.palette.range);
+	range_end = f.palette.range_start + f.palette.range;
+	select_first_color = f.palette.range_start / f.palette.range % 16;
+	select_second_color = range_end / f.palette.range % 16;
+	f.palette.first = f.palette.converted[select_first_color];
+	f.palette.second = f.palette.converted[select_second_color];
+	return (f.palette);
 }

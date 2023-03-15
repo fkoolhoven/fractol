@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/15 11:34:43 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:08:06 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ void		key_press(mlx_key_data_t keydata, void *param);
 t_palette	get_palette(t_fractol fractol, int iterations);
 int			get_color(t_palette c, int iterations, int x, int y);
 void		resize_window(int32_t width, int32_t height, void *param);
+void		free_palette(int ***palette);
+t_palette	get_color_range(t_fractol f, int iterations);
 
 #endif
