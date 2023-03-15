@@ -2,10 +2,10 @@ NAME		= fractol
 CFLAGS		= -Wextra -Wall -Werror -Ofast
 LIBMLX		= ./MLX42
 LIBMLXBUILD	= ./MLX42/build
-LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
 LIBFT_DIR	= includes/libft
+LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
 HEADERS		= -I ./includes -I $(LIBMLX)/include
-LIBS		= $(LIBMLX)/build/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+LIBS		= $(LIBMLXBUILD)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 SRCS		= main.c parameters.c hooks.c coloring.c palette.c fractals.c render.c
 SRC_DIR 	= sources
 OBJS		= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
@@ -21,7 +21,7 @@ $(LIBMLX):
 
 #building graphics library MLX42
 $(LIBMLXBUILD):
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@cmake $(LIBMLX) -B $(LIBMLXBUILD) && make -C $(LIBMLXBUILD) -j4
 
 #building executable 'fractol'
 $(NAME): $(OBJS) $(LIBFT)
@@ -32,17 +32,17 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-#building libft.a (customized library)
+#building libft.a (customized C library)
 $(LIBFT):
 	@make bonus -C $(LIBFT_DIR)
 
-#removing all object filesa and MLX42's build folder
+#removing all object files and MLX42's build folder
 clean:
 	@make clean -C $(LIBFT_DIR)
 	@echo Removed libft object files
 	@rm -rf $(OBJ_DIR)
 	@echo Removed objects directory and object files
-	@rm -rf $(LIBMLX)/build
+	@rm -rf $(LIBMLXBUILD)
 	@echo Removed MLX42 build directory
 
 #executing clean and removing libft.a and executable 'fractol'
