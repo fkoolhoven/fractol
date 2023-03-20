@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:04:30 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 13:08:48 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:53:01 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,20 @@ void	free_palette(int ***palette)
 	int	j;
 
 	j = 0;
-	while (j < 16)
+	while (palette && palette[j] && j < 16)
 	{
-		free(palette[j][0]);
-		free(palette[j][1]);
-		free(palette[j][2]);
-		free(palette[j]);
+		if (palette[j][0])
+			free(palette[j][0]);
+		if (palette[j][1])
+			free(palette[j][1]);
+		if (palette[j][2])
+			free(palette[j][2]);
+		if (palette[j])
+			free(palette[j]);
 		j++;
 	}
-	free(palette);
+	if (palette)
+		free(palette);
 }
 
 static int	***fill_palette(int ***palette, int j, unsigned int color)
@@ -64,15 +69,21 @@ static int	***malloc_color_array(int ***palette, int j)
 {
 	int	i;
 
-	palette[j] = (int **)malloc(sizeof(int *) * 3);
+	palette[j] = (int **)ft_calloc(3, sizeof(int *));
 	if (palette[j] == NULL)
+	{
+		free_palette(palette);
 		return (NULL);
+	}
 	i = 0;
 	while (i < 3)
 	{
-		palette[j][i] = malloc(sizeof(int));
+		palette[j][i] = ft_calloc(1, sizeof(int));
 		if (palette[j][i] == NULL)
+		{
+			free_palette(palette);
 			return (NULL);
+		}
 		i++;
 	}
 	return (palette);
@@ -85,7 +96,7 @@ int	***convert_colors_to_rgb_arrays(void)
 	unsigned int	color;
 
 	j = 0;
-	palette = (int ***)malloc(sizeof(int **) * 16);
+	palette = (int ***)ft_calloc(16, sizeof(int **));
 	if (palette == NULL)
 		return (NULL);
 	while (j < 16)

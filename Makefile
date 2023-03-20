@@ -1,5 +1,6 @@
 NAME		= fractol
-CFLAGS		= -Wextra -Wall -Werror -Ofast
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -Ofast
 LIBMLX		= ./MLX42
 LIBMLXBUILD	= ./MLX42/build
 LIBFT_DIR	= includes/libft

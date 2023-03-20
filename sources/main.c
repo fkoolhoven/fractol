@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/15 16:59:26 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:53:28 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ static void	check_for_setup_errors(t_fractol fractol)
 	}
 	if (fractol.palette.converted == NULL)
 	{
-		ft_putstr_fd("Error: Could not "
+		ft_putendl_fd("Error: Could not "
 			"malloc palette", STDERR_FILENO);
-		free_palette(fractol.palette.converted);
 		exit (EXIT_FAILURE);
 	}
 }

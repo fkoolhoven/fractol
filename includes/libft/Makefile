@@ -3,7 +3,7 @@ SRCMAN 		= ft_isalpha.c ft_isdigit.c ft_strlen.c ft_isalnum.c ft_isascii.c ft_is
 SRCBONUS 	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJMAN 		= ${SRCMAN:c=o}
 OBJBONUS 	= ${SRCBONUS:c=o}
-CC 			= gcc
+CC 			= cc
 CFLAGS 		= -Wall -Wextra -Werror
 REMOVE 		= rm -f
 
