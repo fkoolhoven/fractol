@@ -1,6 +1,6 @@
 <div align="center">
 
-  <h1>FRACTOL</h1>
+  <img src="img/FRACTOL3.png" alt="logo" width="1000" height="auto" />
   
   <p>
     This project is about creating graphically beautiful fractals.
