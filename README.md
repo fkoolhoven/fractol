@@ -37,11 +37,11 @@ make
 
 # Usage
 
-To display the Mandelbrot fractal:
+To display the Mandelbrot set:
 ```c
 ./fractol mandelbrot
 ```
-To display the Julia fractal:
+To display the Julia set:
 ```c
 ./fractol julia [real component of c] [imaginary component of c]
 ```
