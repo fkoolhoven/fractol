@@ -36,7 +36,7 @@ To display the Julia fractal:
 ```
 For example:
 ```c
-./fractol julia -0.538 0.50695"
+./fractol julia -0.538 0.50695
 ```
 
 # Important Learnings
