@@ -54,7 +54,7 @@ For example:
 
 # Important Learnings
 
-This project was my introduction into programming graphics. I learned to use a simple graphics library, practiced event handling and gained some insight into optimization. Additionally I learned about the mathematical notion of complex numbers. The most challening part of this project for me was generating the colors and having them blend into each other. I dove into the concept of linear interpolation for this, which wasn't mandatory.
+This project was my introduction into programming graphics. I learned to use a simple graphics library, practiced event handling and gained some insight into optimization. Additionally I learned about the mathematical notion of complex numbers. The most challening part of this project for me was generating the colors and having them blend into each other. I dove into the concept of linear interpolation for this, which wasn't mandatory. I passed the project with 115%.
 
 # Contact
 
