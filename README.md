@@ -10,7 +10,7 @@
 
 # About the Project
 
-A project made in accordance with the fractol project which is part of the Codam Core Curriculum. This was my introduction into programming graphics. For this project it was mandatory to use the schools graphic's library (https://github.com/codam-coding-college/MLX42). A fractal is a shape that looks similar at different scales. This means that if you zoom in on a fractal, it will look similar to the original shape. Fractals are often found in nature, like in the patterns of snowflakes or the branching of trees. They can also be created mathematically using recursive equasions.
+A project made in accordance with the fractol project which is part of the Codam Core Curriculum. For this project it was mandatory to use the schools graphic's library (https://github.com/codam-coding-college/MLX42). A fractal is a shape that looks similar at different scales. This means that if you zoom in on a fractal, it will look similar to the original shape. Fractals are often found in nature, like in the patterns of snowflakes or the branching of trees. They can also be created mathematically using recursive equasions.
 
 # Features
 - The mouse wheel zooms in and out, almost infinitely (within the limits of the computer).
@@ -54,6 +54,7 @@ For example:
 
 # Important Learnings
 
+This project was my introduction into programming graphics. I learned to use a simple graphics library, practiced event handling and gained some insight into optimization. Additionally I learned about the mathematical notion of complex numbers. The most challening part of this project for me was generating the colors and having them blend into each other. I dove into the concept of linear interpolation for this, which wasn't mandatory.
 
 # Contact
 
