@@ -39,6 +39,11 @@ For example:
 ./fractol julia -0.538 0.50695
 ```
 
+# Controls
+- Zoom in and out with the mousewheel
+- Adjust view using the arrow keys
+- Quit the program with ESC or the window's close button
+
 # Important Learnings
 
 
