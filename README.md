@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="img/PIPEX.png" alt="logo" width="1000" height="auto" />
+  <img src="img/FRACTOL.png" alt="logo" width="1000" height="auto" />
   
   <p>
     This project is about creating graphically beautiful fractals.
