@@ -11,9 +11,11 @@
 # About the Project
 
 A project made in accordance with the fractol project which is part of the Codam Core Curriculum. This was my introduction into programming graphics. For this project it was mandatory to use the schools graphic's library (https://github.com/codam-coding-college/MLX42).
- <img src="img/Mandelbrot.png" alt="logo" width="1000" height="auto" />
+ 
  <img src="img/Julia2.png" alt="logo" width="1000" height="auto" />
+ <img src="img/Zoomed3.png" alt="logo" width="1000" height="auto" />
  <img src="img/Zoomed2.png" alt="logo" width="1000" height="auto" />
+
 # Getting Started
 
 Start by cloning the repository:
