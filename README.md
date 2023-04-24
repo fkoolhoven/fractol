@@ -15,6 +15,7 @@ A project made in accordance with the fractol project which is part of the Codam
  <img src="img/Julia2.png" alt="logo" width="1000" height="auto" />
  <img src="img/Zoomed3.png" alt="logo" width="1000" height="auto" />
  <img src="img/Zoomed2.png" alt="logo" width="1000" height="auto" />
+
 # Getting Started
 
 Start by cloning the repository:
