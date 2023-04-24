@@ -1,6 +1,6 @@
 <div align="center">
 
-  <h1>PIPEX</h1>
+  <h1>FRACTOL</h1>
   
   <p>
     This project is about creating graphically beautiful fractals.
