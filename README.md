@@ -11,6 +11,12 @@
 # About the Project
 
 A project made in accordance with the fractol project which is part of the Codam Core Curriculum. This was my introduction into programming graphics. For this project it was mandatory to use the schools graphic's library (https://github.com/codam-coding-college/MLX42). A fractal is a shape that looks similar at different scales. This means that if you zoom in on a fractal, it will look similar to the original shape. Fractals are often found in nature, like in the patterns of snowflakes or the branching of trees. They can also be created mathematically using recursive equasions.
+
+# Features
+- The mouse wheel zooms in and out, almost infinitely (within the limits of the computer).
+- The program can display the Mandelbrot set.
+- The program is able to create different Julia sets by passing different parameters to the program.
+- The colors show the depth of each fractal.
  
  <img src="img/Julia2.png" alt="logo" width="1000" height="auto" />
  <img src="img/Zoomed3.png" alt="logo" width="1000" height="auto" />
