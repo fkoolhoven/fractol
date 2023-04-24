@@ -14,6 +14,7 @@ A project made in accordance with the fractol project which is part of the Codam
 
 # Features
 - The mouse wheel zooms in and out, almost infinitely (within the limits of the computer).
+- The view can be adjusted using the arrow keys.
 - The program can display the Mandelbrot set.
 - The program is able to create different Julia sets by passing different parameters to the program.
 - The colors show the depth of each fractal.
