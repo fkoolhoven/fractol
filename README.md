@@ -10,7 +10,7 @@
 
 # About the Project
 
-A project made in accordance with the fractol project which is part of the Codam Core Curriculum. This was my introduction into programming graphics.
+A project made in accordance with the fractol project which is part of the Codam Core Curriculum. This was my introduction into programming graphics. For this project it was mandatory to use the schools graphic's library (https://github.com/codam-coding-college/MLX42).
 
 # Getting Started
 
