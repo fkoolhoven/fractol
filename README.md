@@ -8,7 +8,7 @@
 </div>
   
 
-# About the Project
+# About the project
 
 A project made in accordance with the fractol project which is part of the Codam Core Curriculum. For this project it was mandatory to use [the school's graphics library](https://github.com/codam-coding-college/MLX42). The purpose of the project is to create graphically beautiful fractals. A fractal is a shape that looks similar at different scales. This means that if you zoom in on a fractal, it will look similar to the original shape. Fractals are often found in nature, like in the patterns of snowflakes or the branching of trees. They can also be created mathematically using recursive equasions.
 
@@ -23,7 +23,7 @@ A project made in accordance with the fractol project which is part of the Codam
  <img src="img/Zoomed3.png" alt="logo" width="1000" height="auto" />
  <img src="img/Zoomed2.png" alt="logo" width="1000" height="auto" />
 
-# Getting Started
+# Getting started
 
 Start by cloning the repository:
 ```c
@@ -53,7 +53,7 @@ For example:
 - Adjust view using the arrow keys
 - Quit the program with ESC or the window's close button
 
-# Important Learnings
+# Important learnings
 
 This project was my introduction into programming graphics. I learned to use a simple graphics library, practiced event handling and gained some insight into optimization. Additionally I learned about the mathematical notion of complex numbers. The most challening part of this project for me was generating the colors and having them blend into each other. I dove into the concept of linear interpolation for this, which wasn't mandatory. I passed the project with 115%.
 
