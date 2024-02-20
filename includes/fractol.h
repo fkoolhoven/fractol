@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/15 18:46:57 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:55:28 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
+
+# define WINDOW_HEIGHT 600
+# define WINDOW_WIDTH 800
 
 # include "libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -53,16 +56,16 @@ typedef struct s_fractol
 
 // =====FUNCTIONS===============================================================
 
-t_fractol		set_parameters_mandelbrot(int argc);
-t_fractol		set_parameters_julia(int argc, char **argv);
+t_fractol		*set_parameters_mandelbrot(int argc);
+t_fractol		*set_parameters_julia(int argc, char **argv);
 int				***convert_colors_to_rgb_arrays(void);
 void			mouse_scroll(double xdelta, double ydelta, void *param);
 void			key_press(mlx_key_data_t keydata, void *param);
 void			resize_window(int32_t width, int32_t height, void *param);
-void			render_image(t_fractol fractol);
-int				mandelbrot_fractal(t_fractol fractol, int x, int y);
-int				julia_fractal(t_fractol fractol, int x, int y);
-unsigned int	get_color(t_fractol f, int iterations, int x, int y);
+void			render_image(t_fractol *fractol);
+int				mandelbrot_fractal(t_fractol *fractol, int x, int y);
+int				julia_fractal(t_fractol *fractol, int x, int y);
+unsigned int	get_color(t_fractol *f, int iterations, int x, int y);
 void			free_palette(int ***palette);
 
 #endif

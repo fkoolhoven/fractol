@@ -5,8 +5,8 @@ LIBMLX		= ./MLX42
 LIBMLXBUILD	= ./MLX42/build
 LIBFT_DIR	= includes/libft
 LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
-HEADERS		= -I ./includes -I $(LIBMLX)/include
-LIBS		= $(LIBMLXBUILD)/libmlx42.a -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+HEADERS		= -I ./includes -I $(LIBMLX)/include -lglfw
+LIBS		= $(LIBMLXBUILD)/libmlx42.a -framework Cocoa -framework OpenGL -framework IOKit
 SRCS		= main.c parameters.c hooks.c coloring.c palette.c fractals.c render.c
 SRC_DIR 	= sources
 OBJS		= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
@@ -15,10 +15,6 @@ OBJ_DIR 	= objects
 all: libmlx $(NAME)
 
 libmlx: $(LIBMLX) $(LIBMLXBUILD)
-
-#cloning graphics library MLX42 from github
-$(LIBMLX):
-	git clone https://github.com/codam-coding-college/MLX42.git
 
 #building graphics library MLX42
 $(LIBMLXBUILD):
@@ -43,8 +39,6 @@ clean:
 	@echo Removed libft object files
 	@rm -rf $(OBJ_DIR)
 	@echo Removed objects directory and object files
-	@rm -rf $(LIBMLXBUILD)
-	@echo Removed MLX42 build directory
 
 #executing clean and removing libft.a and executable 'fractol'
 fclean: clean
@@ -52,14 +46,9 @@ fclean: clean
 	@echo Removed libft.a
 	@rm -f $(NAME)
 	@echo Removed fractol
-
-#executing fclean and removing MLX42
-libclean: fclean
-	@rm -rf $(LIBMLX)
-	@echo Removed MLX42 repository/directory
+	@rm -rf $(LIBMLXBUILD)
+	@echo Removed MLX42 build directory
 
 re: clean all
-
-libre: fclean libclean all
 
 .PHONY: all, libmlx, clean, fclean, libclean, re

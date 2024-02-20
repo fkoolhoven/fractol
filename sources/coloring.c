@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coloring.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 18:46:25 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:39:58 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,21 @@ static unsigned int	get_depth_shade(t_palette c, int iterations, int x, int y)
 	return (color);
 }
 
-unsigned int	get_color(t_fractol f, int iterations, int x, int y)
+unsigned int	get_color(t_fractol *f, int iterations, int x, int y)
 {
 	unsigned int	color;
 	int				range_end;
 	int				select_first_color;
 	int				select_second_color;
 
-	if (iterations == f.max_iterations)
+	if (iterations == f->max_iterations)
 		return (0x000000FF);
-	f.palette.range_start = iterations - (iterations % f.palette.range);
-	range_end = f.palette.range_start + f.palette.range;
-	select_first_color = f.palette.range_start / f.palette.range % 16;
-	select_second_color = range_end / f.palette.range % 16;
-	f.palette.first = f.palette.converted[select_first_color];
-	f.palette.second = f.palette.converted[select_second_color];
-	color = get_depth_shade(f.palette, iterations, x, y);
+	f->palette.range_start = iterations - (iterations % f->palette.range);
+	range_end = f->palette.range_start + f->palette.range;
+	select_first_color = f->palette.range_start / f->palette.range % 16;
+	select_second_color = range_end / f->palette.range % 16;
+	f->palette.first = f->palette.converted[select_first_color];
+	f->palette.second = f->palette.converted[select_second_color];
+	color = get_depth_shade(f->palette, iterations, x, y);
 	return (color);
 }

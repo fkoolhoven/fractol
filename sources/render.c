@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:17:11 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/15 18:46:40 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:39:05 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static unsigned int	get_pixel_depth(t_fractol fractol, int x, int y)
+static unsigned int	get_pixel_depth(t_fractol *fractol, int x, int y)
 {
 	int				iterations;
 	unsigned int	color;
 
 	iterations = 0;
-	if (fractol.mandelbrot == 1)
+	if (fractol->mandelbrot == 1)
 		iterations = mandelbrot_fractal(fractol, x, y);
-	else if (fractol.julia == 1)
+	else if (fractol->julia == 1)
 		iterations = julia_fractal(fractol, x, y);
 	color = get_color(fractol, iterations, x, y);
 	return (color);
 }
 
-void	render_image(t_fractol fractol)
+void	render_image(t_fractol *fractol)
 {
 	unsigned int	color;
 	int				x;
@@ -34,16 +34,16 @@ void	render_image(t_fractol fractol)
 
 	x = 0;
 	y = 0;
-	while (y < fractol.image_height)
+	while (y < fractol->image_height)
 	{
-		while (x < fractol.image_width)
+		while (x < fractol->image_width)
 		{
 			color = get_pixel_depth(fractol, x, y);
-			mlx_put_pixel(fractol.img_ptr, x, y, color);
+			mlx_put_pixel(fractol->img_ptr, x, y, color);
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
+	mlx_image_to_window(fractol->mlx_ptr, fractol->img_ptr, 0, 0);
 }

@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:42:19 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/17 12:53:28 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:50:51 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static void	check_for_setup_errors(t_fractol fractol)
+static void	check_for_setup_errors(t_fractol *fractol)
 {
-	if (fractol.mlx_ptr == NULL)
+	if (fractol->mlx_ptr == NULL)
 	{
 		ft_putendl_fd("Error: Could not "
 			"initialize a new MLX instance", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
-	if (fractol.img_ptr == NULL)
+	if (fractol->img_ptr == NULL)
 	{
 		ft_putendl_fd("Error: Could not "
 			"allocate new image buffer", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
-	if (fractol.palette.converted == NULL)
+	if (fractol->palette.converted == NULL)
 	{
 		ft_putendl_fd("Error: Could not "
 			"malloc palette", STDERR_FILENO);
@@ -34,30 +34,29 @@ static void	check_for_setup_errors(t_fractol fractol)
 	}
 }
 
-static t_fractol	initial_setup(t_fractol fractol)
+static void initial_setup(t_fractol *fractol)
 {
-	fractol.mlx_ptr = mlx_init(fractol.window_width, fractol.window_height,
+	fractol->mlx_ptr = mlx_init(fractol->window_width, fractol->window_height,
 			"fractol", true);
-	if (fractol.mlx_ptr == NULL)
-		return (fractol);
-	fractol.img_ptr = mlx_new_image(fractol.mlx_ptr, fractol.image_width,
-			fractol.image_height);
-	if (fractol.img_ptr == NULL)
-		return (fractol);
-	fractol.palette.converted = convert_colors_to_rgb_arrays();
-	if (fractol.palette.converted == NULL)
-		return (fractol);
-	mlx_image_to_window(fractol.mlx_ptr, fractol.img_ptr, 0, 0);
+	if (fractol->mlx_ptr == NULL)
+		return;
+	fractol->img_ptr = mlx_new_image(fractol->mlx_ptr, fractol->image_width,
+			fractol->image_height);
+	if (fractol->img_ptr == NULL)
+		return;
+	fractol->palette.converted = convert_colors_to_rgb_arrays();
+	if (fractol->palette.converted == NULL)
+		return;
+	mlx_image_to_window(fractol->mlx_ptr, fractol->img_ptr, 0, 0);
 	render_image(fractol);
-	mlx_scroll_hook(fractol.mlx_ptr, &mouse_scroll, &fractol);
-	mlx_key_hook(fractol.mlx_ptr, &key_press, &fractol);
-	mlx_resize_hook(fractol.mlx_ptr, &resize_window, &fractol);
-	return (fractol);
+	mlx_scroll_hook(fractol->mlx_ptr, &mouse_scroll, fractol);
+	mlx_key_hook(fractol->mlx_ptr, &key_press, fractol);
+	mlx_resize_hook(fractol->mlx_ptr, &resize_window, fractol);
 }
 
-static t_fractol	validate_input(int argc, char **argv)
+static t_fractol	*validate_input(int argc, char **argv)
 {
-	t_fractol	fractol;
+	t_fractol	*fractol;
 
 	if (argc < 2)
 	{
@@ -82,13 +81,14 @@ static t_fractol	validate_input(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_fractol	fractol;
+	t_fractol	*fractol;
 
 	fractol = validate_input(argc, argv);
-	fractol = initial_setup(fractol);
+	initial_setup(fractol);
 	check_for_setup_errors(fractol);
-	mlx_loop(fractol.mlx_ptr);
-	free_palette(fractol.palette.converted);
-	mlx_delete_image(fractol.mlx_ptr, fractol.img_ptr);
+	mlx_loop(fractol->mlx_ptr);
+	free(fractol);
+	free_palette(fractol->palette.converted);
+	mlx_delete_image(fractol->mlx_ptr, fractol->img_ptr);
 	return (EXIT_SUCCESS);
 }
