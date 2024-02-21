@@ -6,7 +6,7 @@
 /*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2024/02/20 21:39:58 by felicia          ###   ########.fr       */
+/*   Updated: 2024/02/21 15:44:30 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static int	interpolate_color(int first_color, int second_color, float amount)
 	return (result);
 }
 
-static float	normalize_iterations(t_palette c, int iterations, int x, int y)
+static float	normalize_iterations(t_palette *c, int iterations, int x, int y)
 {
 	float	amount;
 	float	current_log;
 
 	current_log = log(x * x + y * y) / 2;
 	amount = iterations - (log((current_log) / log(2)) / log(2)) + 3;
-	amount = (amount - c.range_start) / c.range;
+	amount = (amount - c->range_start) / c->range;
 	if (amount > 1)
 		amount = 1;
 	else if (amount < 0)
@@ -35,15 +35,15 @@ static float	normalize_iterations(t_palette c, int iterations, int x, int y)
 	return (amount);
 }
 
-static unsigned int	get_depth_shade(t_palette c, int iterations, int x, int y)
+static unsigned int	get_depth_shade(t_palette *c, int iterations, int x, int y)
 {
 	unsigned int	color;
 	float			amount;
 
 	amount = normalize_iterations(c, iterations, x, y);
-	color = interpolate_color(*c.first[0], *c.second[0], amount) << 24;
-	color += interpolate_color(*c.first[1], *c.second[1], amount) << 16;
-	color += interpolate_color(*c.first[2], *c.second[2], amount) << 8;
+	color = interpolate_color(*c->first[0], *c->second[0], amount) << 24;
+	color += interpolate_color(*c->first[1], *c->second[1], amount) << 16;
+	color += interpolate_color(*c->first[2], *c->second[2], amount) << 8;
 	color += 0xFF;
 	return (color);
 }
@@ -63,6 +63,6 @@ unsigned int	get_color(t_fractol *f, int iterations, int x, int y)
 	select_second_color = range_end / f->palette.range % 16;
 	f->palette.first = f->palette.converted[select_first_color];
 	f->palette.second = f->palette.converted[select_second_color];
-	color = get_depth_shade(f->palette, iterations, x, y);
+	color = get_depth_shade(&f->palette, iterations, x, y);
 	return (color);
 }
