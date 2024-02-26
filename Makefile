@@ -29,7 +29,7 @@ $(MLX42):
 $(NAME): $(OBJS) $(MLX42) $(LIBFT)
 	@$(CC) $(OBJS) $(LIBS) $(INC) -o $(NAME) -lglfw
 
-#compiling source (.c) files into object (.o) files
+#compiling source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -38,14 +38,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(LIBFT):
 	@make bonus -C $(LIBFT_DIR)
 
-#removing all object files and MLX42's build folder
+#removing all object files
 clean:
 	@make clean -C $(LIBFT_DIR)
 	@echo Removed libft object files
 	@rm -rf $(OBJ_DIR)
 	@echo Removed objects directory and object files
 
-#executing clean and removing libft.a and executable 'fractol'
+#removing objects and executables
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
 	@echo Removed libft.a
