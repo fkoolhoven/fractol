@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:29:34 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/02/23 15:56:39 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:35:59 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	**ft_free(char **grid)
 	int	i;
 
 	i = 0;
-	while (grid[i] != '\0')
+	while (grid[i] != NULL)
 	{
 		free(grid[i]);
 		i++;

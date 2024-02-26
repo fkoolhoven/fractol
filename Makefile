@@ -1,28 +1,29 @@
-NAME		= fractol
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -Ofast
-LIBMLX		= ./MLX42
-LIBMLXBUILD	= ./MLX42/build
-LIBFT_DIR	= includes/libft
-LIBFT		= $(addprefix $(LIBFT_DIR)/,libft.a)
-HEADERS		= -I ./includes -I $(LIBMLX)/include -lglfw
-LIBS		= $(LIBMLXBUILD)/libmlx42.a -framework Cocoa -framework OpenGL -framework IOKit
-SRCS		= main.c parameters.c hooks.c coloring.c palette.c fractals.c render.c
-SRC_DIR 	= sources
-OBJS		= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
-OBJ_DIR 	= objects
+NAME			= fractol
+CC				= cc
+CFLAGS			= -Wall -Wextra -Werror -Ofast
+MLX_DIR			= ./MLX42
+MLX_BUILD_DIR	= $(MLX_DIR)/build
+MLX42			= $(MLX_BUILD_DIR)/libmlx42.a
+LIBFT_DIR		= libft
+LIBFT			= $(LIBFT_DIR)/libft.a
+LIBS			= $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit
+INC         	= -I includes -I $(MLX_DIR)/include
+SRCS			= main.c parameters.c hooks.c coloring.c palette.c fractals.c render.c
+SRC_DIR 		= sources
+OBJS			= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
+OBJ_DIR 		= objects
 
 all: libmlx $(NAME)
 
-libmlx: $(LIBMLX) $(LIBMLXBUILD)
+libmlx: $(MLX42)
 
 #building graphics library MLX42
-$(LIBMLXBUILD):
-	@cmake $(LIBMLX) -B $(LIBMLXBUILD) && make -C $(LIBMLXBUILD) -j4
+$(MLX42):
+	@cmake $(MLX_DIR) -B $(MLX_BUILD_DIR) && make -C $(MLX_BUILD_DIR) -j4
 
 #building executable 'fractol'
-$(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)
+$(NAME): $(OBJS) $(MLX42) $(LIBFT)
+	@$(CC) $(OBJS) $(LIBS) $(INC) -o $(NAME) -lglfw
 
 #compiling source (.c) files into object (.o) files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -46,9 +47,9 @@ fclean: clean
 	@echo Removed libft.a
 	@rm -f $(NAME)
 	@echo Removed fractol
-	@rm -rf $(LIBMLXBUILD)
+	@rm -rf $(MLX_BUILD_DIR)
 	@echo Removed MLX42 build directory
 
-re: clean all
+re: fclean all
 
-.PHONY: all, libmlx, clean, fclean, libclean, re
+.PHONY: all, libmlx, clean, fclean, re

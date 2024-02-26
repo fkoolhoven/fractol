@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2024/02/21 15:43:42 by felicia          ###   ########.fr       */
+/*   Updated: 2024/02/26 16:44:38 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WINDOW_HEIGHT 600
 # define WINDOW_WIDTH 800
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <math.h>

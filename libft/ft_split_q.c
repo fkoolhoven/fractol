@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:01:57 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/01/31 17:02:32 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:36:16 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	**ft_free(char **result)
 	int	i;
 
 	i = 0;
-	while (result[i] != '\0')
+	while (result[i] != NULL)
 	{
 		free(result[i]);
 		i++;
