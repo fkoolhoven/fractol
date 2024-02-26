@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:12:08 by felicia           #+#    #+#             */
-/*   Updated: 2024/02/26 16:44:38 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:09:25 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define WINDOW_HEIGHT 600
 # define WINDOW_WIDTH 800
 
-# include "../libft/libft.h"
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "../libraries/libft/libft.h"
+# include "../libraries/MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <math.h>
 

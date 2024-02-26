@@ -1,10 +1,11 @@
 NAME			= fractol
 CC				= cc
 CFLAGS			= -Wall -Wextra -Werror -Ofast
-MLX_DIR			= ./MLX42
+LIBS_DIR		= libraries
+MLX_DIR			= $(LIBS_DIR)/MLX42
 MLX_BUILD_DIR	= $(MLX_DIR)/build
 MLX42			= $(MLX_BUILD_DIR)/libmlx42.a
-LIBFT_DIR		= libft
+LIBFT_DIR		= $(LIBS_DIR)/libft
 LIBFT			= $(LIBFT_DIR)/libft.a
 LIBS			= $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit
 INC         	= -I includes -I $(MLX_DIR)/include
