@@ -32,7 +32,7 @@ $(NAME): $(OBJS) $(MLX42) $(LIBFT)
 #compiling source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(INC) $(CFLAGS) -c $< -o $@
 
 #building libft.a (customized C library)
 $(LIBFT):

@@ -6,11 +6,11 @@
 /*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:17:11 by fkoolhov          #+#    #+#             */
-/*   Updated: 2024/02/20 21:39:05 by felicia          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:04:51 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 static unsigned int	get_pixel_depth(t_fractol *fractol, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:57:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2024/02/21 15:39:39 by felicia          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:04:36 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 static void zoom_out(t_fractol *f, double temp_width, double temp_height)
 {

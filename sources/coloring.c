@@ -6,11 +6,11 @@
 /*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:58:24 by fkoolhov          #+#    #+#             */
-/*   Updated: 2024/02/21 15:44:30 by felicia          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:04:29 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 static int	interpolate_color(int first_color, int second_color, float amount)
 {

@@ -6,11 +6,11 @@
 /*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:09:48 by fkoolhov          #+#    #+#             */
-/*   Updated: 2024/02/20 21:54:28 by felicia          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:04:47 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 static void set_general_parameters(t_fractol *fractol)
 {
