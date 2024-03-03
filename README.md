@@ -10,7 +10,7 @@
 
 # About the project
 
-A project made in accordance with the fractol project which is part of the Codam Core Curriculum. For this project it was mandatory to use [the school's graphics library](https://github.com/codam-coding-college/MLX42). The purpose of the project is to create graphically beautiful fractals. A fractal is a shape that looks similar at different scales. This means that if you zoom in on a fractal, it will look similar to the original shape. Fractals are often found in nature, like in the patterns of snowflakes or the branching of trees. They can also be created mathematically using recursive equasions. Fractol was built to run on MacOS.
+A project made in accordance with the fractol project which is part of the Codam Core Curriculum. For this project it was mandatory to use [the school's graphics library](https://github.com/codam-coding-college/MLX42). The purpose of the project is to create graphically beautiful fractals. A fractal is a shape that looks similar at different scales. This means that if you zoom in on a fractal, it will look similar to the original shape. Fractals are often found in nature, like in the patterns of snowflakes or the branching of trees. They can also be created mathematically using recursive equasions.
 
 # Features
 - The mouse wheel zooms in and out, almost infinitely (within the limits of the computer).
@@ -34,6 +34,8 @@ Compile by using make:
 ```c
 make
 ```
+
+Check [MLX42's documentation](https://github.com/codam-coding-college/MLX42/tree/5e826c2390e83a3acf175fef9b42d4b52cb38ae9) if you're having trouble compiling. 
 
 # Usage
 
