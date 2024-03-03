@@ -27,7 +27,7 @@ A project made in accordance with the fractol project which is part of the Codam
 
 Start by cloning the repository:
 ```c
-git clone https://github.com/fkoolhoven/fractol.git
+git clone --recursive https://github.com/fkoolhoven/fractol.git
 ```
 
 Compile by using make:
