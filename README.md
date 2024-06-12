@@ -35,7 +35,7 @@ Compile by using make:
 make
 ```
 
-Check [MLX42's documentation](https://github.com/codam-coding-college/MLX42/tree/5e826c2390e83a3acf175fef9b42d4b52cb38ae9) if you're having trouble compiling. 
+Check [MLX42's documentation](https://github.com/codam-coding-college/MLX42/tree/5e826c2390e83a3acf175fef9b42d4b52cb38ae9) for an overview of dependencies. 
 
 # Usage
 ⚠️ Please note this project was made on/for macOS! ⚠️
